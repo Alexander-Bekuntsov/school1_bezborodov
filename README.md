@@ -14,6 +14,4 @@
 
 <br>
 
-### Использовано
-
-`PHP` · `SQL / MySQL` · `JavaScript` · `SCSS` · `HTML` · `Telegram Bot API` · `Apache`
+`PHP` · `SQL / MySQL` · `JavaScript` · `SCSS` · `HTML` · `Telegram API`
