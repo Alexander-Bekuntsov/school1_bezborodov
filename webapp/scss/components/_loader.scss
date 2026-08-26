@@ -1,0 +1,109 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: var(--color-bg);
+    transition: 0.2s;
+    z-index: 999;
+
+    * {
+        user-select: none;
+    }
+
+    &:not(:has(a)) {
+        pointer-events: none;
+    }
+
+    &.loader--skip {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    img,
+    svg {
+        width: 30px;
+        height: 67px;
+        user-select: none;
+        transform: translateX(-5px);
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header__title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .loader {
+        &__bezborodov {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            white-space: nowrap;
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-50%) translateY(7px);
+            animation: loaderRise 0.7s forwards;
+
+            svg {
+                width: 230px;
+                height: auto;
+
+                @media (max-width: 768px) {
+                    width: 220px;
+                }
+            }
+
+            @keyframes loaderRise {
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+
+            path {
+                font-family: "Unbounded", Arial, Helvetica, sans-serif;
+                color: var(--color-title);
+                display: inline-block;
+                opacity: 0;
+                transform: translateY(3px);
+                animation: fadeUp 0.3s forwards;
+
+                @keyframes fadeUp {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            }
+
+            @for $i from 1 through 25 {
+                path:nth-child(#{$i}) {
+                    animation-delay: #{($i - 1) * 0.02s};
+                }
+            }
+        }
+    }
+
+    .header__title {
+        animation: loaderTitleShow 0.7s forwards;
+        animation-delay: 0.6s;
+        opacity: 0;
+
+        @keyframes loaderTitleShow {
+            to {
+                opacity: 1;
+            }
+        }
+    }
+}

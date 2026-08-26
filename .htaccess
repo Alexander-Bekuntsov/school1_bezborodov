@@ -1,0 +1,19 @@
+RewriteEngine On
+
+<FilesMatch "^\.|^(?:composer\.json|composer\.lock|config\.php|env)$">
+    Require all denied
+</FilesMatch>
+
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ / [R=301,L]
+
+ErrorDocument 403 /
+ErrorDocument 404 /
+
+RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
+RewriteRule ^.*$ - [F,L]

@@ -1,0 +1,76 @@
+.confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: var(--color-bg-fill);
+    backdrop-filter: blur(30px);
+    padding: 0 20px;
+    z-index: 950;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s opacity, 0.3s visibility;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        gap: 20px !important;
+        transform: translateY(10px);
+        animation: confirm 0.4s forwards;
+        opacity: 0;
+        animation-delay: 0.3s;
+        padding-top: 60px;
+
+        @keyframes confirm {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &.confirm--show {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &__text {
+        max-width: 400px;
+        text-align: center;
+        user-select: none;
+
+        @media (max-width: 768px) {
+            max-width: 369px;
+        }
+    }
+
+    &__button {
+        background-color: var(--color-border-rt);
+        color: var(--color-white);
+        font-size: 16px;
+        padding: 10px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: var(--color-border-trans);
+        }
+
+        &:active {
+            opacity: 0.7;
+        }
+    }
+
+    svg {
+        height: 67px;
+        margin-bottom: 32px;
+    }
+}

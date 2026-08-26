@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+
+.DS_Store
+Thumbs.db
+.idea/
+
+*.log
+*.xlsx
+
+caches/
+uploads/
+cron/timetable/logs/
+bot/app/bot.log
+dashboard/app/files/*.xlsx

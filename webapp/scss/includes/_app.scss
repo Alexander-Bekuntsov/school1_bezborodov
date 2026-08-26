@@ -1,0 +1,7 @@
+.app {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: calc(30px - 13px);
+    }
+}

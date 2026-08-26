@@ -1,0 +1,35 @@
+# Включаем RewriteEngine
+RewriteEngine On
+
+# Исключаем favicon и API
+RewriteCond %{REQUEST_URI} !^/favicon\.ico$
+RewriteCond %{REQUEST_URI} !^/api/
+
+# Если реально существует файл или папка — отдать напрямую
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Всё остальное отправляем на index.php
+RewriteRule ^ index.php [QSA,L]
+
+# Отключаем листинг папок
+Options -Indexes
+
+# Защита .htaccess и других конфигов
+<Files ~ "^\.ht">
+    Require all denied
+</Files>
+
+<FilesMatch "\.(env|ini|log|conf|sh|inc|bak|psd|sql)$">
+    Require all denied
+</FilesMatch>
+
+RewriteCond %{THE_REQUEST} \s/forbidden\.php[?\s] [NC]
+RewriteRule ^forbidden\.php$ / [R=302,L]
+
+RewriteRule ^uploads/ - [F,L]
+
+RewriteRule ^favicon\.ico$ /favicon.ico [L]
+
+ErrorDocument 403 /forbidden.php
+ErrorDocument 404 /404.php

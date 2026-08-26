@@ -1,0 +1,24 @@
+.flipdown {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    font-size: 15px;
+    user-select: none;
+    width: max-content;
+
+    * {
+        font-family: "JetBrains Mono";
+    }
+
+    &-hours,
+    &-minutes {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 27px;
+        height: 27px;
+        background-color: rgba(0, 0, 0, 0.781);
+        color: white;
+        border-radius: 3px;
+    }
+}

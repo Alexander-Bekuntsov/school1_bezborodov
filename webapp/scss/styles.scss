@@ -1,0 +1,18 @@
+@import "config/global";
+@import "config/fonts";
+@import "config/vars";
+
+@import "libs/swiper/swiper";
+@import "libs/swiper/swiper.config";
+@import "libs/toastify/toastify";
+@import "libs/fancybox/fancybox";
+
+@import "components/header";
+@import "components/timetable";
+@import "components/shimmer";
+@import "components/classes";
+@import "components/bezborodov";
+@import "components/loader";
+@import "components/confirm";
+
+@import "includes/app";

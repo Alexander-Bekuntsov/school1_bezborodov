@@ -1,0 +1,13 @@
+.bezborodov {
+    font-family: "JetBrains Mono", Arial, Helvetica, sans-serif;
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    max-width: 768px;
+    font-size: 10px;
+    pointer-events: none;
+    text-align: right;
+    padding-right: var(--container-offset);
+    opacity: 0.3;
+}

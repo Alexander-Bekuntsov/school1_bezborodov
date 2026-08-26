@@ -1,0 +1,57 @@
+.swiper-button-prev,
+.swiper-button-next {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-bg-pane);
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    transition: 0.4s;
+    top: calc(var(--swiper-navigation-top-offset, 50%) + 1px) !important;
+    z-index: 20;
+
+    @media (max-width: 768px) {
+        top: calc(var(--swiper-navigation-top-offset, 50%) + 5px) !important;
+        width: 34px;
+        height: 34px;
+    }
+
+    @media (min-width: 768px) {
+        &:hover {
+            border-color: var(--color-border);
+        }
+    }
+
+    &:active {
+        svg {
+            transform: scale(0.93);
+        }
+    }
+
+    &.swiper-button-disabled {
+        visibility: hidden;
+        opacity: 0 !important;
+    }
+
+    svg {
+        width: 17px;
+        height: 17px;
+        fill: var(--color-brand);
+        transition: 0.4s;
+    }
+}
+
+.swiper-button-prev {
+    left: calc(var(--swiper-navigation-sides-offset, 4px) - 3px) !important;
+
+    @media (max-width: 768px) {
+        left: calc(var(--swiper-navigation-sides-offset, 4px) + 3px) !important;
+    }
+}
+
+.swiper-button-next {
+    right: calc(var(--swiper-navigation-sides-offset, 4px) - 3px) !important;
+
+    @media (max-width: 768px) {
+        right: calc(var(--swiper-navigation-sides-offset, 4px) + 3px) !important;
+    }
+}

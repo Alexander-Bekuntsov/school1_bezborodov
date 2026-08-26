@@ -1,0 +1,57 @@
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/functions/core.php";
+
+set_time_limit(50);
+
+if (CRON_SECRET_TOKEN === '' || !isset($_GET["token"]) || $_GET["token"] !== CRON_SECRET_TOKEN) {
+    die("Access denied");
+}
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+header('Content-Type: application/json; charset=utf-8');
+
+$cacheDir = $_SERVER["DOCUMENT_ROOT"] . '/caches';
+$results = [
+    'status' => 'ok',
+    'deleted_files' => 0,
+    'deleted_dirs' => 0,
+    'errors' => []
+];
+
+/**
+ * Рекурсивное удаление файлов и папок
+ */
+function deleteDirectory($dir, &$results) {
+    if (!is_dir($dir)) {
+        $results['errors'][] = "Directory not found: $dir";
+        return;
+    }
+
+    $files = scandir($dir);
+    foreach ($files as $file) {
+        if ($file === '.' || $file === '..') continue;
+
+        $path = $dir . '/' . $file;
+
+        if (is_dir($path)) {
+            deleteDirectory($path, $results);
+            if (@rmdir($path)) {
+                $results['deleted_dirs']++;
+            } else {
+                $results['errors'][] = "Failed to delete directory: $path";
+            }
+        } else {
+            if (@unlink($path)) {
+                $results['deleted_files']++;
+            } else {
+                $results['errors'][] = "Failed to delete file: $path";
+            }
+        }
+    }
+}
+
+// Запуск очистки
+deleteDirectory($cacheDir, $results);
+
+echo json_encode($results, JSON_UNESCAPED_UNICODE);
