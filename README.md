@@ -11,3 +11,9 @@
 ### Telegram: [@school_shedule_bezborodov_bot](https://t.me/school_shedule_bezborodov_bot)
 
 Проект объединяет веб-версию расписания, Telegram-бота, административную панель, обработку Excel-файлов и автоматическую рассылку расписания.
+
+<br>
+
+### Использовано
+
+`PHP` · `SQL / MySQL` · `JavaScript` · `SCSS` · `HTML` · `Telegram Bot API` · `Apache`
